@@ -1,28 +1,27 @@
 with open('input.txt') as f:
     lines = f.readlines()
 
-first_row = [int(line.split("   ")[0]) for line in lines]
-second_row = [int(line.split("   ")[1]) for line in lines]
+# parse input
+first_list = [int(line.split()[0]) for line in lines]
+second_list = [int(line.split()[1]) for line in lines]
 
-def part_one():
-    sorted_first = sorted(first_row)
-    sorted_second = sorted(second_row)
+def part_one() -> int:
+    sorted_first = sorted(first_list)
+    sorted_second = sorted(second_list)
 
-    distances = 0
-    for x,y in zip(sorted_first, sorted_second):
-        distances += abs(x - y)
+    distances = sum(abs(x-y) for x,y in zip(sorted_first,sorted_second))
 
     return distances
 
-def part_two():
+def part_two() -> int:
     similarity_score = 0
-    hashmap = {x:0 for x in first_row}
+    hashmap = {x:0 for x in first_list}
 
-    for y in second_row:
+    for y in second_list:
         if y in hashmap.keys():
             hashmap[y] += 1
 
-    for i in first_row:
+    for i in first_list:
         similarity_score += i * hashmap[i]
 
     return similarity_score
