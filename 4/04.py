@@ -17,17 +17,17 @@ def seek_word(x:int, y:int, d, i):
     y = y + d[1]
     i += 1
     if i == len(word):
-        return 1
-    try:
-        if lines[x][y] == word[i]:
-            return seek_word(x, y, d, i)
-        else:
-            return 0
-    except IndexError:
-        return 0
+        return True
+    if x not in range(len(lines)) or y not in range(len(lines)):
+        return False
+    if lines[x][y] == word[i]:
+        return seek_word(x, y, d, i)
+    else:
+        return False
+
     
 if __name__ == '__main__':
-    with open("example.txt") as f:
+    with open("input.txt") as f:
         lines = [line.strip() for line in f.readlines()]
 
     count = 0
