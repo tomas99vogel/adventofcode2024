@@ -1,7 +1,7 @@
 from collections import deque
 DIRECTIONS = [(0, 1),(0, -1), (-1, 0), (1, 0)] # starting east=right
 
-def dijkstra(grid, start, end):
+def shortest_path(grid, start, end):
     rows, cols = len(grid), len(grid[0])
 
     dist = [[float('inf')] * cols for _ in range(rows)]
@@ -35,5 +35,5 @@ with open("input") as f:
 start = (139, 1)  
 end = (1, 139) 
 
-part_one = dijkstra(grid, start, end)
+part_one = shortest_path(grid, start, end)
 print(part_one)

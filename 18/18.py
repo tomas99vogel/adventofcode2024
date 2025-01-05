@@ -21,7 +21,7 @@ for i in range(BYTES):
 # for line in grid:
 #     print("".join(line))
 
-def dijkstra(grid, start, end):
+def shortest_path(grid, start, end):
     rows, cols = len(grid), len(grid[0])
 
     dist = [[float('inf')] * cols for _ in range(rows)]
@@ -49,5 +49,5 @@ def dijkstra(grid, start, end):
 
 
 
-part_one = dijkstra(grid, start, end)
+part_one = shortest_path(grid, start, end)
 print(part_one)
