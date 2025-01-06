@@ -8,15 +8,14 @@ with open("input.txt") as f:
 def try_towels(pattern):
     if len(pattern) == 0:
         return 1
+    possible_combinations = 0
     for towel in towels:
         if pattern.startswith(towel):
-            if try_towels(pattern[len(towel):]):
-                return 1
-    return 0
+            possible_combinations += try_towels(pattern[len(towel):])
+    return possible_combinations
 
-part_one = 0
-
+count = 0
 for pattern in patterns:
-    part_one += try_towels(pattern)
+    count += try_towels(pattern)
+print(count)
     
-print(part_one)
